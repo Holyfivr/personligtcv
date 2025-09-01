@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Document</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/script.js" defer></script>
+        <!-- Bootstrap CSS and JS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+        <!-- Material Icons -->
+        <!-- https://fonts.google.com/icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <!-- Import specific icons to reduce load time -->
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=home,palette,settings&display=block" rel="stylesheet">-->
+
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kumar+One+Outline&family=Quicksand:wght@300..700&display=swap"
+            rel="stylesheet">
+
+
+
+    </head>
+
+    <body>
+
+
+
+
+        <nav class="navbar navbar-light sticky-top">
+            <span class="navtext" style="min-width: 13rem;">
+                &nbsp;&nbsp;&nbsp;Joel Seger
+            </span>
+            <span class="nav-item" role="presentation">
+                <a class="nav-link" id="flavorText" data-bs-toggle="tab"><i> - Aspiring software developer, fueled by coffee, code, and creativity. </i></a>
+            </span>
+        </nav>
+        <section class="sectionBody">
+            <div class="text-center container">
+                <div class="row">
+                    <div class="col fixaLayout">
+                        <button type="button" id="whoAmIButton" class="btn" data-bs-toggle="modal"
+                            data-bs-target="#modalId">
+                            <div class="card">
+                                <img class="card-img-top resizer" id="whoAmIImage" src="img/profilbild.jpg"
+                                    alt="Title" />
+                                <div class="card-body">
+                                    <h4 class="card-title">Who am I?</h4>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="col fixaLayout">
+                        <button type="button" id="portfolioButton" class="btn" data-bs-toggle="modal"
+                            data-bs-target="#modalId">
+
+                            <div class="card">
+                                <img class="card-img-top resizer" id="portfolioImage" src="img/portfolio.png"
+                                    alt="Title" />
+                                <div class="card-body">
+                                    <h4 class="card-title">Portfolio</h4>
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="col fixaLayout">
+                        <button type="button" id="qualificationButton" class="btn" data-bs-toggle="modal"
+                            data-bs-target="#modalId">
+
+                            <div class="card">
+                                <img class="card-img-top resizer" id="qualificationImage" src="img/qualifications.png"
+                                    alt="Title" />
+                                <div class="card-body">
+                                    <h4 class="card-title">Qualifications</h4>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <!-- Modal Body -->
+                <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                <div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modalSize" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title quicksand-infotext" id="modal-Title-Id">
+
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body quicksand-infotext" id="modalBodyId"></div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </body>
+
+</html>
