@@ -60,7 +60,7 @@ footer {
     align-items: center;
     overflow: hidden;
     padding: 2rem 0.5rem;
-    background: #fff;
+    background: #ffffff;
 }
 .col { /* Ser till att korten alltid är i tre kolumner (förutom när de ändras pga windowsize) */
     width: 33% !important;
@@ -73,7 +73,7 @@ footer {
     border: 1px solid black !important;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.53);
     background: linear-gradient(to bottom,var(--main-color),var(--main-color),#ffffff);
-    transition: transform .2s, box-shadow .2s;
+    transition: transform .2s, box-shadow .2s; /* fixar en mjukare animering av hover-effekten */
 }
 .card:hover {
     transform: scale(1.01);
