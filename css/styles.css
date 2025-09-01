@@ -1,138 +1,116 @@
-/* Döljer scrollbar men tillåter scrolling */
-html {
-    overflow: auto;
+/* Fördefinerade färger för att kunna ändra färgschema åp sidan enkelt */
+:root {
+    --main-color: #c7c7c7fd;
+    --shadow-color: rgba(104,104,104,0.48);
+}
+
+/* Huvudelement */
+html { /* tillåter scrollning, men gömmer scrollbar */
     overflow-y: auto;
-    scrollbar-width: none;
-    
+    scrollbar-width: none; 
 }
-
-/* Textstil från Google Fonts */
-.quicksand-infotext {
-  font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-/* Lite samma som html */
-body {
-    height: 100%;
+body { 
     overflow-x: hidden;
-    overflow-y: auto;
-    background: linear-gradient(to bottom, #ffffff 45%, #464646);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Quicksand", sans-serif;
 }
-/* Ändrar storleken på Bootstrap-modalen */
-.modalSize {
-    width: fit-content !important; 
-    max-width: 60rem !important;  
-    text-align: left !important;
-    
-}
-
-.nav-link {
-    padding-right: 3rem !important;
+footer { 
+    margin-top: auto;
+    box-shadow: 0 -3px 7px rgba(0,0,0,0.46);
 }
 
-.navtext {
-    color: #e9e9e9 !important;
-    
-    font-weight: bold;
+/* Importerad google-fonts stil med lite modifieringar */
+.quicksand-infotext {
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
-    text-shadow: 2px 2px 2px rgba(41, 41, 41, 0.788);
-    font-size: 2.5rem !important;
-    padding-right: 2rem !important;
-    
-    
+    font-weight: 500;
+    font-style: normal;
 }
 
-.container {
-    display: flex !important;
-    align-items: center !important;
-    height: 100% !important;
-}
-.row {
-    width: 100% !important;
-}
-.navbar {
+/* "meny"-bar design - mycket omgjorda bootstrap grejer */
+.navbar { 
     height: 70px;
     display: flex;
     align-items: center;
-    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.459);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.527);
-    width: 102%;
-    background: linear-gradient(to bottom, #ffffff 75%, var(--main-color));
+    box-shadow: 0 4px 5px rgba(0,0,0,0.46);
+    border-bottom: 1px solid rgba(0,0,0,0.53);
+    background: linear-gradient(to bottom,#ffffff 75%, var(--main-color));
 }
-
-.navbar-nav {
+.navtext { 
+    color: #e9e9e9 !important;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgba(41,41,41,0.79);
+    font-size: 2.5rem !important;
+    padding-right: 2rem;
+}
+.nav-link { 
+    padding-right: 3rem !important;
+}
+.navbar .container { 
     display: flex;
     align-items: center;
+    height: 100%;
 }
 
-
-.card {
-    border: 1px solid black !important;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.534);
-    background: linear-gradient(to bottom, var(--main-color), var(--main-color), #ffffff);
-}
-.card:hover {
-    transform: scale(1.01);
-    box-shadow: 8px 8px 20px var(--shadow-color);
-
-}
-
-/* Fixar en main färg och skuggfärg så att jag slipper ändra på massa ställen om jag vill ändra färg på sidan*/
-:root {
-    --main-color: #c7c7c7fd;
-    --shadow-color: rgba(104, 104, 104, 0.484);
-}
-
-
-/* Fixar så att bilderna (och korten) ändrar storlek när skärmen ändras, men inte mindre än 11 rem*/
-.resizer {
-    width: 20rem;
-    max-width: 20rem;
-}
-@media (max-width: 767px) {
-    .resizer {
-        width: 11rem;
-        min-width: 11rem;
-        max-width: 11rem;
-    }
-    .card {
-        text-align: center;
-        justify-self: center;
-        max-width: 12rem;
-    }
-}
-
-
-.sectionBody {
-    height: 100% !important;
-    display: flex !important;
-    align-items: center !important;
+/* main content där kort och modals ligger */
+.sectionBody { 
+    display: flex;
+    align-items: center;
     overflow: hidden;
-    padding-left: 0.5rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem !important;
-    background: white !important;
+    padding: 2rem 0.5rem;
+    background: #fff;
 }
-.col {
+.col { /* Ser till att korten alltid är i tre kolumner (förutom när de ändras pga windowsize) */
     width: 33% !important;
     max-width: 33% !important;
     min-width: 33% !important;
 }
 
-.modal-header {
-    background: linear-gradient(to right, white, var(--shadow-color)) !important;
-    color: white;
-    
-    box-shadow: 0px 2px 17px var(--shadow-color);
+/* Modifierade bootstrap-kort som även agerar som länkar för modals */
+.card { 
+    border: 1px solid black !important;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.53);
+    background: linear-gradient(to bottom,var(--main-color),var(--main-color),#ffffff);
+    transition: transform .2s, box-shadow .2s;
+}
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 8px 8px 20px var(--shadow-color);
+}
+.resizer { /* Bildstorlek desktop */
+    width: 20rem;
+    max-width: 20rem;
+}
+@media (max-width: 767px) { /* Bildstorlek mindre skärmar */
+    .resizer {
+        width: 11rem;
+        min-width: 11rem;
+        max-width: 11rem;
+    }
+    .card { 
+        text-align: center;
+        justify-self: center;
+        max-width: 12rem;
+        margin: 0 auto;
+    }
 }
 
-.modal-footer {
-    background: linear-gradient(to right, white, var(--shadow-color)) !important;
-    color: white;
-
-    box-shadow: 0px -2px 17px var(--shadow-color);
+/* Modals */
+.modalSize { 
+    width: fit-content !important;
+    max-width: 60rem !important;
+    text-align: left !important;
 }
+.modal-header { 
+    background: linear-gradient(to right,#fff,var(--shadow-color)) !important;
+    color: white;
+    box-shadow: 0 2px 17px var(--shadow-color);
+}
+.modal-footer { 
+    background: linear-gradient(to right,#fff,var(--shadow-color)) !important;
+    color: white;
+    box-shadow: 0 -2px 17px var(--shadow-color);
+}
+

@@ -1,11 +1,14 @@
 
+//Eventlistener som hanterar knapptryckningar på modals, och ändrar innehållet i modalen beroende på vilken som trycks 
 document.addEventListener("click", function(event) {
     const btn = event.target.closest(".btn");
     if (btn) {
         if (btn.id === "whoAmIButton") {;
             document.getElementById("modalBodyId").innerHTML = modalContent.whoAmIButton;
+            document.getElementById("modalBodyId").style.width = "";
         } else if (btn.id === "portfolioButton") {
             document.getElementById("modalBodyId").innerHTML = modalContent.portfolioButton;
+            document.getElementById("modalBodyId").style.width = "30rem";
         } else if (btn.id === "qualificationButton") {
             document.getElementById("modalBodyId").innerHTML = modalContent.qualificationButton;
             document.getElementById("modalBodyId").style.width = "30rem";
@@ -13,7 +16,7 @@ document.addEventListener("click", function(event) {
     }
 });
 
-
+// Innehåll för modaler i JSON format (hade kunna köra in detta direkt i koden ovanför, men ser lite mer clean ut att separera dem)
 const modalContent = {
     whoAmIButton: 
     "<center><h2>I'm Joel. Hi :) 👋</h2><p></center>" +
@@ -39,7 +42,7 @@ const modalContent = {
     "<br><br>One of my dreams has always been to create my own world – whether as a book, a game, or a roleplaying adventure. That creative spark is something I carry with me into programming as well." +
     "<br>I see programming as both a craft and a puzzle, and I’m excited to keep building my skills and turning my passion into a career." +
     "</p>",
-    portfolioButton: "<h2>Portfolio</h2><p>Projekt och länkar...</p>",
+    portfolioButton: "<h2><center>Portfolio</center></h2><p>I'm working on it ok?</p>",
     qualificationButton: 
     "<center><h2>Qualifications</h2></center>" +
     "<p>Skills and education:</p>" +
@@ -59,7 +62,9 @@ const modalContent = {
 
 
 
-
+//eventlistener som läser av fönsterstorlek och modifierar vissa element på sidan därefter. 
+//Kortlayouten ändras så att korten stackas ovanpå varandra om fönsterbredden är mindre än 735px.
+//Vid fönsterbredd mindre än 510px döljs även flavortexten.
 window.addEventListener("resize", function() {
     if (window.innerWidth < 735 && window.innerWidth > 510) {
         document.getElementById("flavorText").innerHTML = "<i> - Coffee, code, and creativity. </i>";
@@ -69,9 +74,7 @@ window.addEventListener("resize", function() {
         });
     } else if (window.innerWidth < 510) {
         document.getElementById("flavorText").innerHTML = "";
-    }
-    
-    else if (window.innerWidth >= 735) {
+    } else if (window.innerWidth >= 735) {
         document.getElementById("flavorText").innerHTML = "<i> - Aspiring software developer, fueled by coffee, code, and creativity. </i>";
         document.querySelectorAll(".fixaLayout").forEach(el => {
             el.classList.add("col");
