@@ -8,10 +8,10 @@ document.addEventListener("click", function(event) {
             document.getElementById("modalBodyId").style.width = "";
         } else if (btn.id === "portfolioButton") {
             document.getElementById("modalBodyId").innerHTML = modalContent.portfolioButton;
-            document.getElementById("modalBodyId").style.width = "";
+            document.getElementById("modalBodyId").style.width = "20rem";
         } else if (btn.id === "qualificationButton") {
             document.getElementById("modalBodyId").innerHTML = modalContent.qualificationButton;
-            document.getElementById("modalBodyId").style.minWidth = "15rem";
+            document.getElementById("modalBodyId").style.minWidth = "20rem";
         }
     }
 });
@@ -91,3 +91,4 @@ function checkLayout() {
 checkLayout();
 //kollar aktivt efter förändringar i fönstrets storlek och anpassar layouten efter storlek
 window.addEventListener("resize", checkLayout);
+
