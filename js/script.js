@@ -8,10 +8,10 @@ document.addEventListener("click", function(event) {
             document.getElementById("modalBodyId").style.width = "";
         } else if (btn.id === "portfolioButton") {
             document.getElementById("modalBodyId").innerHTML = modalContent.portfolioButton;
-            document.getElementById("modalBodyId").style.width = "30rem";
+            document.getElementById("modalBodyId").style.width = "20rem";
         } else if (btn.id === "qualificationButton") {
             document.getElementById("modalBodyId").innerHTML = modalContent.qualificationButton;
-            document.getElementById("modalBodyId").style.width = "30rem";
+            document.getElementById("modalBodyId").style.width = "20rem";
         }
     }
 });
