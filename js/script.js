@@ -62,24 +62,32 @@ const modalContent = {
 
 
 
-//eventlistener som läser av fönsterstorlek och modifierar vissa element på sidan därefter. 
-//Kortlayouten ändras så att korten stackas ovanpå varandra om fönsterbredden är mindre än 735px.
-//Vid fönsterbredd mindre än 510px döljs även flavortexten.
-window.addEventListener("resize", function() {
-    if (window.innerWidth < 735 && window.innerWidth > 510) {
-        document.getElementById("flavorText").innerHTML = "<i> - Coffee, code, and creativity. </i>";
-        document.querySelectorAll(".fixaLayout").forEach(el => {
-            el.classList.add("row");
-            el.classList.remove("col");
-        });
-    } else if (window.innerWidth < 510) {
-        document.getElementById("flavorText").innerHTML = "";
-    } else if (window.innerWidth >= 735) {
-        document.getElementById("flavorText").innerHTML = "<i> - Aspiring software developer, fueled by coffee, code, and creativity. </i>";
-        document.querySelectorAll(".fixaLayout").forEach(el => {
-            el.classList.add("col");
-            el.classList.remove("row");
-        });
+// Funktion som hanterar layout baserat på fönsterbredd
+function checkLayout() {
+    const flavor = document.getElementById("flavorText");
+    if (!flavor) {
+        return; 
     }
-});
+    const width = window.innerWidth;
 
+   
+    if (width < 510) {
+        flavor.innerHTML = "";
+    } else if (width < 735) {
+        flavor.innerHTML = "<i> - Coffee, code, and creativity. </i>";
+    } else {
+        flavor.innerHTML = "<i> - Aspiring software developer, fueled by coffee, code, and creativity. </i>";
+    }
+
+   
+    const stack = width < 735;
+    document.querySelectorAll(".fixaLayout").forEach(el => {
+        el.classList.toggle("row", stack);
+        el.classList.toggle("col", !stack);
+    });
+}
+
+//ser till att funktionen körs när DOM har laddat färdigt (med tanke på defer i html koden så behövs inte domcontentloaded)
+checkLayout();
+//kollar aktivt efter förändringar i fönstrets storlek och anpassar layouten efter storlek
+window.addEventListener("resize", checkLayout);
