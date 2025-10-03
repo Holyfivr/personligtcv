@@ -1,3 +1,14 @@
+
+.fluidBackground-canvas {
+  position: fixed;   
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;       
+  display: block;
+}
+
 /* Fördefinerade färger för att kunna ändra färgschema åp sidan enkelt */
 :root {
     --main-color: #c7c7c7fd;
@@ -44,6 +55,7 @@ footer {
     text-shadow: 2px 2px 2px rgba(41,41,41,0.79);
     font-size: 2.5rem !important;
     padding-right: 2rem;
+    z-index: 2;
 }
 .nav-link { 
     padding-right: 3rem !important;
@@ -59,13 +71,21 @@ footer {
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: 2rem 0.5rem;
-    background: #ffffff;
+    padding: 10rem 0.5rem;
+   
 }
 .col { /* Ser till att korten alltid är i tre kolumner (förutom när de ändras pga windowsize) */
     width: 33% !important;
     max-width: 33% !important;
     min-width: 33% !important;
+}
+@media (max-width: 769px) {
+    .col { /* På mellanstora skärmar: låt flexbox/Bootstrap bestämma bredd */
+        width: auto !important;
+        max-width: none !important;
+        min-width: auto !important;
+        flex: 0 0 auto;
+    }
 }
 
 /* Modifierade bootstrap-kort som även agerar som länkar för modals */
@@ -83,16 +103,30 @@ footer {
     width: 20rem;
     max-width: 20rem;
 }
-@media (max-width: 767px) { /* Bildstorlek mindre skärmar */
+@media (max-width: 770px) { /* Bildstorlek mindre skärmar */
     .resizer {
-        width: 11rem;
-        min-width: 11rem;
-        max-width: 11rem;
+        width: 20rem;
+        min-width: 20rem;
+        max-width: 20rem;
+       
     }
     .card { 
         text-align: center;
         justify-self: center;
+        max-width: 21rem;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 510px) { /* Bildstorlek små skärmar */
+    .resizer {
+        width: 12rem;
+        min-width: 12rem;
         max-width: 12rem;
+    }
+    .card { 
+        text-align: center;
+        justify-self: center;
+        max-width: 13rem;
         margin: 0 auto;
     }
 }
@@ -100,17 +134,146 @@ footer {
 /* Modals */
 .modalSize { 
     width: fit-content !important;
+    min-width: 35rem !important;
     max-width: 60rem !important;
     text-align: left !important;
+    margin: 1rem;
+}
+@media (max-width: 768px) {
+    .modalSize {
+        max-width: 95vw !important;
+        min-width: auto !important;
+        margin: 0.5rem auto !important;
+        width: 95vw !important;
+    }
+}
+@media (max-width: 576px) {
+    .modalSize {
+        max-width: 98vw !important;
+        min-width: auto !important;
+        width: 98vw !important;
+        margin: 0.25rem auto !important;
+    }
+}
+.modal-content {
+    border-radius: 1.2rem !important;
+    border: none !important;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.25) !important;
+    overflow: hidden !important;
+    width: 100% !important;
 }
 .modal-header { 
-    background: linear-gradient(to right,#fff,var(--shadow-color)) !important;
-    color: white;
-    box-shadow: 0 2px 17px var(--shadow-color);
+    background: linear-gradient(135deg, #e8eef3 0%, #c4d4e0 100%) !important;
+    color: #2c3e50 !important;
+    border-bottom: none !important;
+    padding: 1.75rem 2rem !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+@media (max-width: 576px) {
+    .modal-header {
+        padding: 0.875rem !important;
+        gap: 0.5rem !important;
+    }
+}
+.modal-title {
+    font-weight: 700 !important;
+    font-size: 1.85rem !important;
+    color: #1a2633 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1 1 auto !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    line-height: 1.3 !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 40px) !important;
+    text-align: left !important;
+    overflow: hidden !important;
+}
+@media (max-width: 576px) {
+    .modal-title {
+        font-size: 0.95rem !important;
+        line-height: 1.2 !important;
+        max-width: calc(100% - 35px) !important;
+    }
+}
+@media (max-width: 400px) {
+    .modal-title {
+        font-size: 0.9rem !important;
+    }
+}
+.modal-body {
+    padding: 2.25rem !important;
+    line-height: 1.75 !important;
+    font-size: 1.05rem !important;
+    color: #444 !important;
+    background: #ffffff !important;
+}
+@media (max-width: 576px) {
+    .modal-body {
+        padding: 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+}
+.modal-body h2 {
+    color: #2c3e50 !important;
+    margin-bottom: 1rem !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+}
+@media (max-width: 576px) {
+    .modal-body h2 {
+        font-size: 1.15rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+}
+@media (max-width: 400px) {
+    .modal-body h2 {
+        font-size: 1rem !important;
+    }
+}
+.modal-body ul {
+    padding-left: 1.5rem !important;
+    margin: 1rem 0 !important;
+}
+.modal-body li {
+    margin-bottom: 0.5rem !important;
 }
 .modal-footer { 
-    background: linear-gradient(to right,#fff,var(--shadow-color)) !important;
-    color: white;
-    box-shadow: 0 -2px 17px var(--shadow-color);
+    background: linear-gradient(135deg, #c4d4e0 0%, #e8eef3 100%) !important;
+    border-top: none !important;
+    padding: 1.25rem 2rem !important;
+    border-radius: 0 !important;
+    min-height: 3rem !important;
+}
+@media (max-width: 576px) {
+    .modal-footer {
+        padding: 1rem 1.5rem !important;
+    }
+}
+.btn-close {
+    filter: none !important;
+    opacity: 0.6 !important;
+    background-color: rgba(44, 62, 80, 0.1) !important;
+    border-radius: 50% !important;
+    padding: 0.5rem !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+}
+.btn-close:hover {
+    opacity: 1 !important;
+    transform: scale(1.15) !important;
+    background-color: rgba(44, 62, 80, 0.2) !important;
 }
 
