@@ -1,4 +1,3 @@
-
 const { Renderer, Program, Mesh, Geometry, Vec2 } = window.OGL;
 
 
@@ -60,7 +59,7 @@ vec3 hueShiftRGB(vec3 col,float deg){
 
 vec4 sigmoid(vec4 x){return 1./(1.+exp(-x));}
 
-// === CPPN-funktion ===
+// === CPPN function ===
 vec4 cppn_fn(vec2 coordinate,float in0,float in1,float in2){
     buf[6]=vec4(coordinate.x,coordinate.y,0.3948333106474662+in0,0.36+in1);
     buf[7]=vec4(0.14+in2,sqrt(coordinate.x*coordinate.x+coordinate.y*coordinate.y),0.,0.);
